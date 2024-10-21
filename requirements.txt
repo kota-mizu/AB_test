@@ -1,0 +1,8 @@
+requirements = """
+streamlit
+numpy
+matplotlib
+seaborn
+pandas
+scipy
+"""
