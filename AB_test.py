@@ -132,7 +132,7 @@ st.markdown(rf'''
 
     <table>
       <tr>
-        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>改善率（BのCVR/AのCVR）</th>
+        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>改善率<br>（BのCVR/AのCVR）</th>
       </tr>
       <tr>
         <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
