@@ -102,38 +102,42 @@ st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用�
 st.markdown(rf'''
     <style>
     table {{
-        width: 100%; /* テーブル全体の幅をページ幅全体に */
-        border-collapse: collapse; /* 枠線を統一 */
-        table-layout: fixed; /* 列幅を固定 */
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
     }}
     th, td {{
-        padding: 10px; /* セルのパディングを大きく */
-        text-align: center; /* テキストを中央揃え */
-        border: 1px solid black; /* 枠線を追加 */
-        font-size: 18px; /* フォントサイズを大きく */
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+        font-size: 18px;
     }}
     th:nth-child(1), td:nth-child(1) {{
-        width: 20%; /* 「パターン」列を狭く設定 */
+        width: 20%;
     }}
     th:nth-child(2), td:nth-child(2),
     th:nth-child(3), td:nth-child(3),
     th:nth-child(4), td:nth-child(4) {{
-        width: 26.66%; /* 来訪者数、CV数、CV率を同じ幅に設定 */
+        width: 20%;
+    }}
+    th:nth-child(5), td:nth-child(5) {{
+        width: 20%;
     }}
     </style>
 
     <table>
       <tr>
-        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th>
+        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>改善率</th>
       </tr>
       <tr>
-        <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td>
+        <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
       </tr>
       <tr>
         <td>B</td><td>{visitors_b}</td><td>{conversion_b}</td><td>{"{:.1%}".format(cvr_b)}</td>
       </tr>
     </table>
     ''', unsafe_allow_html=True)
+
 
 st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
 
