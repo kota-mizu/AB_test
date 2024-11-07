@@ -232,5 +232,5 @@ else:
     font_size = "28px"
 
 st.markdown(fr'''
-  <p style="text-align: center; font-size: 20px;">Bを採用することで、 <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span>の確率でCVRが平均的に向上することが期待されます。</p>
+  <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
   ''', unsafe_allow_html=True)
