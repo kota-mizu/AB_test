@@ -5,8 +5,13 @@ import seaborn as sns
 import pandas as pd
 from datetime import datetime, timedelta
 from scipy import stats
+import matplotlib
 
 sns.set(font_scale=2)
+
+# 日本語フォントを設定
+#matplotlib.rcParams['font.family'] = 'Arial Unicode MS'  # Macの場合
+matplotlib.rcParams['font.family'] = 'MS Gothic'  # Windowsの場合
 
 # Google Fontsの読み込み
 st.markdown("""
@@ -204,11 +209,11 @@ prob = (samples_posterior_A < samples_posterior_B).mean()
 # グラフ設定
 fig = plt.figure(figsize=(20,10))
 ax = fig.add_subplot(111)
-sns.histplot(samples_posterior_A, ax=ax, kde=True, label='CVR of A')
-sns.histplot(samples_posterior_B, ax=ax, kde=True, label='CVR of B')
-ax.set_ylabel('Density', fontsize='x-large')
+sns.histplot(samples_posterior_A, ax=ax, kde=True, label='AのCVR')
+sns.histplot(samples_posterior_B, ax=ax, kde=True, label='BのCVR')
+ax.set_ylabel('密度', fontsize='x-large')  
 ax.set_xlabel('CVR', fontsize='x-large')
-ax.set_title('Distribution of CVR', fontsize='x-large')
+ax.set_title('CVRの分布', fontsize='x-large')  
 ax.legend(loc='upper right', fontsize='x-large')
 fig.tight_layout()
 
