@@ -120,14 +120,19 @@ st.markdown(rf'''
     th:nth-child(4), td:nth-child(4) {{
         width: 20%;
     }}
-    th:nth-child(5), td:nth-child(5) {{
+    th:nth-child(5){{
+        width: 20%;
+        font-size:15px
+    }}
+
+    td:nth-child(5) {{
         width: 20%;
     }}
     </style>
 
     <table>
       <tr>
-        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>改善率</th>
+        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>改善率（BのCVR/AのCVR）</th>
       </tr>
       <tr>
         <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
