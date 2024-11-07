@@ -9,9 +9,6 @@ import matplotlib
 
 sns.set(font_scale=2)
 
-# 日本語フォントを設定
-#matplotlib.rcParams['font.family'] = 'Arial Unicode MS'  # Macの場合
-matplotlib.rcParams['font.family'] = 'MS Gothic'  # Windowsの場合
 
 # Google Fontsの読み込み
 st.markdown("""
