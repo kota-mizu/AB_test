@@ -113,20 +113,20 @@ st.markdown(rf'''
         font-size: 18px;
     }}
     th:nth-child(1), td:nth-child(1) {{
-        width: 20%;
+        width: 19%;
     }}
     th:nth-child(2), td:nth-child(2),
     th:nth-child(3), td:nth-child(3),
     th:nth-child(4), td:nth-child(4) {{
-        width: 20%;
+        width: 19%;
     }}
     th:nth-child(5){{
-        width: 20%;
+        width: 19%;
         font-size:15px
     }}
 
     td:nth-child(5) {{
-        width: 20%;
+        width: 24%;
     }}
     </style>
 
