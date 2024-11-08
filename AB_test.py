@@ -6,6 +6,7 @@ import pandas as pd
 from datetime import datetime, timedelta
 from scipy import stats
 import matplotlib
+import os
 
 sns.set(font_scale=2)
 
@@ -22,10 +23,10 @@ st.markdown("""
 
 password = st.text_input("パスワード", type="password")
 
-if password == st.secrets["password"]:
-st.success("アクセスが許可されました。")
+if password == os.environ["password"]:
+   st.success("アクセスが許可されました。")
 else:
-st.error("アクセスが拒否されました。")
+   st.error("アクセスが拒否されました。")
 
 ###サイドバー###
 
