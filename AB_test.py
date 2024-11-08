@@ -20,12 +20,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# password = st.text_input("パスワード", type="password")
+password = st.text_input("パスワード", type="password")
  
-# if password == st.secrets["password"]:
-#     st.success("アクセスが許可されました。")
-# else:
-#     st.error("アクセスが拒否されました。")
+if password == st.secrets["password"]:
+    st.success("アクセスが許可されました。")
+else:
+    st.error("アクセスが拒否されました。")
 
 ###サイドバー###
 
