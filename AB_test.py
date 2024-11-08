@@ -22,7 +22,7 @@ st.markdown("""
 
 password = st.text_input("パスワード", type="password")
  
-if password == os.secrets["password"]:
+if password == os.environ["password"]:
     st.success("アクセスが許可されました。")
 else:
     st.error("アクセスが拒否されました。")
