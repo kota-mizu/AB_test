@@ -47,7 +47,7 @@ with col2:
     end_date = st.date_input("テスト終了日", value=datetime.today())
 
 # サイドバーでの評価指標入力
-url_link = st.sidebar.text_area("関連URL（必要であれば）", placeholder="URLを記載してください", height=5)
+url_link = st.sidebar.text_area("関連URL（必要であれば）", placeholder="URLを記載してください")
 
 st.sidebar.markdown("-----------------")  # ここで横線を追加
 
@@ -80,7 +80,7 @@ st.markdown('A/Bテスト結果の訪問者数とCV数を入力することで�
 
 ## 施策内容 ##
 st.markdown("<h4>■施策について</h4>", unsafe_allow_html=True)
-policy_content = st.text_area("〇施策内容", placeholder="入力できます", height=5)
+policy_content = st.text_area("〇施策内容", placeholder="入力できます")
 
 st.write("〇評価指標")
 st.markdown(f'<span style="font-weight: bold;"><u>{evaluation_metrix}</u></span>', unsafe_allow_html=True)
