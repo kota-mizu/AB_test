@@ -5,7 +5,6 @@ import seaborn as sns
 import pandas as pd
 from datetime import datetime, timedelta
 from scipy import stats
-import matplotlib
 
 sns.set(font_scale=2)
 
