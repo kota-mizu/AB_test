@@ -5,8 +5,10 @@ import seaborn as sns
 import pandas as pd
 from datetime import datetime, timedelta
 from scipy import stats
+import matplotlib
 
 sns.set(font_scale=2)
+
 
 # Google Fontsの読み込み
 st.markdown("""
@@ -18,6 +20,12 @@ st.markdown("""
    </style>
 """, unsafe_allow_html=True)
 
+password = st.text_input("パスワード", type="password")
+
+if password == st.secrets["password"]:
+st.success("アクセスが許可されました。")
+else:
+st.error("アクセスが拒否されました。")
 
 ###サイドバー###
 
@@ -185,8 +193,8 @@ st.markdown("-----------------")  # ここで横線を追加
 
 ## ベイジアンA/Bテストセクション##
 st.markdown("<h4>■ベイジアンA/Bテスト</h4>", unsafe_allow_html=True)
-st.markdown("ベイジアンA/Bテストを用いて得られた結果です。AとBの各コンバージョン率（CVR）に関する事後分布を分析し、どの施策がより効果的であるかを評価しています。")
-st.markdown("（事前分布はベータ分布の無情報事前分布を採用しています）")
+st.markdown("ベイジアンA/Bテストを用いて、AとBの各コンバージョン率（CVR）に対する事後分布を算出し、どちらの施策がより効果的かを評価しています。")
+st.markdown("ここでは各施策のCVRは数学的にベータ分布に従うと仮定しているため、得られた事後分布に基づき、乱数を生成（サンプリング）しました。このサンプリングした乱数同士で比較を行い、BのCVRがAを上回る確率を計算しています。")
 
 # 事前分布のパラメータのα、βを指定
 alpha_prior = 1
@@ -204,11 +212,11 @@ prob = (samples_posterior_A < samples_posterior_B).mean()
 # グラフ設定
 fig = plt.figure(figsize=(20,10))
 ax = fig.add_subplot(111)
-sns.histplot(samples_posterior_A, ax=ax, kde=True, label='CVR of A')
-sns.histplot(samples_posterior_B, ax=ax, kde=True, label='CVR of B')
-ax.set_ylabel('Density', fontsize='x-large')
+sns.histplot(samples_posterior_A, ax=ax, kde=True, label='AのCVR')
+sns.histplot(samples_posterior_B, ax=ax, kde=True, label='BのCVR')
+ax.set_ylabel('密', fontsize='x-large')  
 ax.set_xlabel('CVR', fontsize='x-large')
-ax.set_title('Distribution of CVR', fontsize='x-large')
+ax.set_title('CVRの分布', fontsize='x-large')  
 ax.legend(loc='upper right', fontsize='x-large')
 fig.tight_layout()
 
@@ -232,6 +240,5 @@ color = "#0F7AD3"  # 濃い青
 font_size = "28px"
 
 st.markdown(fr'''
-  <p style="text-align: center; font-size: 20px;">Bを採用することで、 <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span>の確率でCVRが平均的に向上することが期待されます。</p>
-  <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
+  <p style="text-align: center; font-size: 20px;">Aの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
  ''', unsafe_allow_html=True)
