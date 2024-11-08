@@ -5,27 +5,19 @@ import seaborn as sns
 import pandas as pd
 from datetime import datetime, timedelta
 from scipy import stats
-import os
 
 sns.set(font_scale=2)
 
-
 # Google Fontsの読み込み
 st.markdown("""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    body {
-        font-family: 'Roboto', sans-serif;
-    }
-    </style>
+   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+   body {
+       font-family: 'Roboto', sans-serif;
+   }
+   </style>
 """, unsafe_allow_html=True)
 
-# password = st.text_input("パスワード", type="password")
- 
-# if password == os.environ["password"]:
-#     st.success("アクセスが許可されました。")
-# else:
-#     st.error("アクセスが拒否されました。")
 
 ###サイドバー###
 
@@ -40,11 +32,11 @@ col1, col2 = st.sidebar.columns(2)
 
 # 1つ目のカラムに開始日を配置
 with col1:
-    start_date = st.date_input("テスト開始日", value=datetime.today() - timedelta(days=7))
+start_date = st.date_input("テスト開始日", value=datetime.today() - timedelta(days=7))
 
 # 2つ目のカラムに終了日を配置
 with col2:
-    end_date = st.date_input("テスト終了日", value=datetime.today())
+end_date = st.date_input("テスト終了日", value=datetime.today())
 
 # サイドバーでの評価指標入力
 url_link = st.sidebar.text_area("関連URL（必要であれば）", placeholder="URLを記載してください", height=5)
@@ -54,17 +46,17 @@ st.sidebar.markdown("-----------------")  # ここで横線を追加
 st.sidebar.subheader('取得データを入力して下さい。')
 col3, col4 = st.sidebar.columns(2)
 with col3:
-    visitors_a = st.number_input('Aの訪問者数', value=1000)
+visitors_a = st.number_input('Aの訪問者数', value=1000)
 with col4:
-    conversion_a = st.number_input('AのCV数', value=50)
+conversion_a = st.number_input('AのCV数', value=50)
 cvr_a = conversion_a / visitors_a
 st.sidebar.markdown(f'AのCVR :  **{"{:.1%}".format(cvr_a)}**')
 
 col5, col6 = st.sidebar.columns(2)
 with col5:
-    visitors_b = st.number_input('Bの訪問者数', value=1000)
+visitors_b = st.number_input('Bの訪問者数', value=1000)
 with col6:
-    conversion_b = st.number_input('BのCV数', value=50)
+conversion_b = st.number_input('BのCV数', value=50)
 cvr_b = conversion_b / visitors_b
 st.sidebar.markdown(f'BのCVR :  **{"{:.1%}".format(cvr_b)}**')
 
@@ -89,10 +81,10 @@ st.markdown(f'<span style="font-weight: bold;"><u>{evaluation_metrix}</u></span>
 ##テスト日数##
 st.write("〇テスト期間")
 if end_date >= start_date:
-    days_difference = (end_date - start_date).days
-    st.markdown(f'<span style="font-weight: bold;"><u>{start_date} ➡ {end_date}（{days_difference} days）</u></span>', unsafe_allow_html=True)
+days_difference = (end_date - start_date).days
+st.markdown(f'<span style="font-weight: bold;"><u>{start_date} ➡ {end_date}（{days_difference} days）</u></span>', unsafe_allow_html=True)
 else:
-    st.markdown('<span style="font-weight: bold;"><u>終了日は開始日より後の日付を選択してください。</u></span>', unsafe_allow_html=True)
+st.markdown('<span style="font-weight: bold;"><u>終了日は開始日より後の日付を選択してください。</u></span>', unsafe_allow_html=True)
 
 st.write("〇施策関連URL（必要であれば）")
 st.markdown(f'<span style="font-weight: bold;"><u>{url_link}</u></span>', unsafe_allow_html=True)
@@ -108,48 +100,48 @@ st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用�
 
 # テーブルのスタイルを調整
 st.markdown(rf'''
-    <style>
-    table {{
-        width: 100%;
-        border-collapse: collapse;
-        table-layout: fixed;
-    }}
-    th, td {{
-        padding: 10px;
-        text-align: center;
-        border: 1px solid black;
-        font-size: 18px;
-    }}
-    th:nth-child(1), td:nth-child(1) {{
-        width: 19%;
-    }}
-    th:nth-child(2), td:nth-child(2),
-    th:nth-child(3), td:nth-child(3),
-    th:nth-child(4), td:nth-child(4) {{
-        width: 19%;
-    }}
-    th:nth-child(5){{
-        width: 19%;
-        font-size:15px
-    }}
+   <style>
+   table {{
+       width: 100%;
+       border-collapse: collapse;
+       table-layout: fixed;
+   }}
+   th, td {{
+       padding: 10px;
+       text-align: center;
+       border: 1px solid black;
+       font-size: 18px;
+   }}
+   th:nth-child(1), td:nth-child(1) {{
+       width: 19%;
+   }}
+   th:nth-child(2), td:nth-child(2),
+   th:nth-child(3), td:nth-child(3),
+   th:nth-child(4), td:nth-child(4) {{
+       width: 19%;
+   }}
+   th:nth-child(5){{
+       width: 19%;
+       font-size:15px
+   }}
 
-    td:nth-child(5) {{
-        width: 24%;
-    }}
-    </style>
+   td:nth-child(5) {{
+       width: 24%;
+   }}
+   </style>
 
-    <table>
-      <tr>
-        <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>CVR改善率（B/A）</th>
-      </tr>
-      <tr>
-        <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
-      </tr>
-      <tr>
-        <td>B</td><td>{visitors_b}</td><td>{conversion_b}</td><td>{"{:.1%}".format(cvr_b)}</td>
-      </tr>
-    </table>
-    ''', unsafe_allow_html=True)
+   <table>
+     <tr>
+       <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>CVR改善率（B/A）</th>
+     </tr>
+     <tr>
+       <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
+     </tr>
+     <tr>
+       <td>B</td><td>{visitors_b}</td><td>{conversion_b}</td><td>{"{:.1%}".format(cvr_b)}</td>
+     </tr>
+   </table>
+   ''', unsafe_allow_html=True)
 
 
 st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
@@ -169,32 +161,32 @@ non_conversion_b = visitors_b - conversion_b
 
 # 観測データ
 observed = np.array([[conversion_a, non_conversion_a],
-                     [conversion_b, non_conversion_b]])
+[conversion_b, non_conversion_b]])
 # カイ二乗適合度検定
 chi2, p_value, dof, expected = stats.chi2_contingency(observed, correction=False)
 
 
 # p値によって出力を変更
 if p_value <= 0.05:
-    st.markdown(f'''
-    <p style="text-align: center; font-size: 24px; color:#0F7AD3; font-weight: bold;">95%の信頼度で有意差あり (P値={p_value:.2f})</p>
-    ''', unsafe_allow_html=True)
+st.markdown(f'''
+   <p style="text-align: center; font-size: 24px; color:#0F7AD3; font-weight: bold;">95%の信頼度で有意差あり (P値={p_value:.2f})</p>
+   ''', unsafe_allow_html=True)
 elif p_value <= 0.1:
-    st.markdown(f'''
-    <p style="text-align: center; font-size: 24px; color: #27B1FF; font-weight: bold;">90%の信頼度で有意差あり (P値={p_value:.2f})</p>
-    ''', unsafe_allow_html=True)
+st.markdown(f'''
+   <p style="text-align: center; font-size: 24px; color: #27B1FF; font-weight: bold;">90%の信頼度で有意差あり (P値={p_value:.2f})</p>
+   ''', unsafe_allow_html=True)
 else:
-    st.markdown(f'''
-    <p style="text-align: center; font-size: 24px; font-weight: bold;">有意差なし (P値={p_value:.2f})</p>
-    ''', unsafe_allow_html=True)
+st.markdown(f'''
+   <p style="text-align: center; font-size: 24px; font-weight: bold;">有意差なし (P値={p_value:.2f})</p>
+   ''', unsafe_allow_html=True)
 
 
 st.markdown("-----------------")  # ここで横線を追加
 
 ## ベイジアンA/Bテストセクション##
 st.markdown("<h4>■ベイジアンA/Bテスト</h4>", unsafe_allow_html=True)
-st.markdown("ベイジアンA/Bテストを用いて、AとBの各コンバージョン率（CVR）に対する事後分布を算出し、どちらの施策がより効果的かを評価しています。")
-st.markdown("ここでは各施策のCVRは数学的にベータ分布に従うと仮定しているため、得られた事後分布に基づき、乱数を生成（サンプリング）しました。このサンプリングした乱数同士で比較を行い、BのCVRがAを上回る確率を計算しています。")
+st.markdown("ベイジアンA/Bテストを用いて得られた結果です。AとBの各コンバージョン率（CVR）に関する事後分布を分析し、どの施策がより効果的であるかを評価しています。")
+st.markdown("（事前分布はベータ分布の無情報事前分布を採用しています）")
 
 # 事前分布のパラメータのα、βを指定
 alpha_prior = 1
@@ -212,11 +204,11 @@ prob = (samples_posterior_A < samples_posterior_B).mean()
 # グラフ設定
 fig = plt.figure(figsize=(20,10))
 ax = fig.add_subplot(111)
-sns.histplot(samples_posterior_A, ax=ax, kde=True, label='AのCVR')
-sns.histplot(samples_posterior_B, ax=ax, kde=True, label='BのCVR')
-ax.set_ylabel('密', fontsize='x-large')  
+sns.histplot(samples_posterior_A, ax=ax, kde=True, label='CVR of A')
+sns.histplot(samples_posterior_B, ax=ax, kde=True, label='CVR of B')
+ax.set_ylabel('Density', fontsize='x-large')
 ax.set_xlabel('CVR', fontsize='x-large')
-ax.set_title('CVRの分布', fontsize='x-large')  
+ax.set_title('Distribution of CVR', fontsize='x-large')
 ax.legend(loc='upper right', fontsize='x-large')
 fig.tight_layout()
 
@@ -227,18 +219,19 @@ st.pyplot(fig)
 
 # probの値に基づいて色を決定
 if prob <= 0.3:
-    color = "red"
-    font_size = "28px"
+color = "red"
+font_size = "28px"
 elif 0.3 < prob <= 0.7:
-    color = None
-    font_size = "28px"
+color = None
+font_size = "28px"
 elif 0.7 < prob <= 0.85:
-    color = "#27B1FF"  # 薄い青
-    font_size = "28px"
+color = "#27B1FF"  # 薄い青
+font_size = "28px"
 else:
-    color = "#0F7AD3"  # 濃い青
-    font_size = "28px"
+color = "#0F7AD3"  # 濃い青
+font_size = "28px"
 
 st.markdown(fr'''
-  <p style="text-align: center; font-size: 20px;">Aの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
-  ''', unsafe_allow_html=True)
+  <p style="text-align: center; font-size: 20px;">Bを採用することで、 <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span>の確率でCVRが平均的に向上することが期待されます。</p>
+  <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
+ ''', unsafe_allow_html=True)
