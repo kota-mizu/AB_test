@@ -33,7 +33,7 @@ else:
 st.sidebar.subheader("施策詳細")
 
 # サイドバーでの評価指標入力
-evaluation_metrix = st.sidebar.text_area("評価指標（CVRになる指標を想定しています。）", placeholder="入力できます", height=5)
+evaluation_metrix = st.sidebar.text_area("評価指標（CVRになる指標を想定しています。）")
 
 # 2つのカラムを作成
 col1, col2 = st.sidebar.columns(2)
