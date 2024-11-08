@@ -41,11 +41,11 @@ col1, col2 = st.sidebar.columns(2)
 
 # 1つ目のカラムに開始日を配置
 with col1:
-start_date = st.date_input("テスト開始日", value=datetime.today() - timedelta(days=7))
+    start_date = st.date_input("テスト開始日", value=datetime.today() - timedelta(days=7))
 
 # 2つ目のカラムに終了日を配置
 with col2:
-end_date = st.date_input("テスト終了日", value=datetime.today())
+    end_date = st.date_input("テスト終了日", value=datetime.today())
 
 # サイドバーでの評価指標入力
 url_link = st.sidebar.text_area("関連URL（必要であれば）", placeholder="URLを記載してください", height=5)
@@ -55,17 +55,17 @@ st.sidebar.markdown("-----------------")  # ここで横線を追加
 st.sidebar.subheader('取得データを入力して下さい。')
 col3, col4 = st.sidebar.columns(2)
 with col3:
-visitors_a = st.number_input('Aの訪問者数', value=1000)
+    visitors_a = st.number_input('Aの訪問者数', value=1000)
 with col4:
-conversion_a = st.number_input('AのCV数', value=50)
+    conversion_a = st.number_input('AのCV数', value=50)
 cvr_a = conversion_a / visitors_a
 st.sidebar.markdown(f'AのCVR :  **{"{:.1%}".format(cvr_a)}**')
 
 col5, col6 = st.sidebar.columns(2)
 with col5:
-visitors_b = st.number_input('Bの訪問者数', value=1000)
+    visitors_b = st.number_input('Bの訪問者数', value=1000)
 with col6:
-conversion_b = st.number_input('BのCV数', value=50)
+    conversion_b = st.number_input('BのCV数', value=50)
 cvr_b = conversion_b / visitors_b
 st.sidebar.markdown(f'BのCVR :  **{"{:.1%}".format(cvr_b)}**')
 
