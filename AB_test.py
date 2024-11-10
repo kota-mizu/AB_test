@@ -10,26 +10,16 @@ import os
 
 sns.set(font_scale=2)
 
-import matplotlib.font_manager as fm
-import matplotlib
-
-# Noto Sans CJK JPを指定
-font_path = '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc'  # フォントパス
-fontprop = fm.FontProperties(fname=font_path)
-
-# 日本語フォント設定
-matplotlib.rcParams['font.family'] = fontprop.get_name()
-
 
 # Google Fontsの読み込み
-st.markdown("""
+st.markdown('''
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-    body {
-        font-family: 'Roboto', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+    html, body, [class*="css"]  {
+        font-family: 'Noto Sans JP', sans-serif;
     }
     </style>
-""", unsafe_allow_html=True)
+''', unsafe_allow_html=True)
 
 # サイドバーにパスワード入力を移動
 password = st.sidebar.text_input("パスワード", type="password")
