@@ -13,14 +13,14 @@ sns.set(font_scale=2)
 
 
 # Google Fontsの読み込み
-# st.markdown('''
-#     <style>
-#     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-#     body {
-#         font-family: 'Roboto', sans-serif;
-#     }
-#     </style>
-# ''', unsafe_allow_html=True)
+st.markdown('''
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    body {
+        font-family: 'Roboto', sans-serif;
+    }
+    </style>
+''', unsafe_allow_html=True)
 
 # サイドバーにパスワード入力を移動
 password = st.sidebar.text_input("パスワード", type="password")
