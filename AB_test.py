@@ -32,7 +32,7 @@ if not st.session_state.authenticated:
         password = st.text_input("パスワード", type="password")
         if password == os.environ.get("password"):
             st.session_state.authenticated = True
-            st.experimental_rerun()
+            st.rerun()
         elif password:
             st.error("正しいパスワードを入力してください。")
 
