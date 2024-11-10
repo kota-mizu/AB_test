@@ -257,18 +257,21 @@ if st.session_state.authenticated:
     st.pyplot(fig)
     
     # probの値に基づいて色を決定
-    if prob <= 0.3:
+    if prob <= 0.2:
         color = "red"
         font_size = "28px"
-    elif 0.3 < prob <= 0.7:
+    elif 0.2 < prob <= 0.8:
         color = None
         font_size = "28px"
-    elif 0.7 < prob <= 0.85:
+    elif 0.8 < prob <= 0.9:
         color = "#27B1FF"  # 薄い青
         font_size = "28px"
     else:
         color = "#0F7AD3"  # 濃い青
         font_size = "28px"
+
+    st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
+
     
     st.markdown(fr'''
       <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
