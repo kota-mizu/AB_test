@@ -113,7 +113,7 @@ if st.session_state.authenticated:
     
     ##通常ABテストセクション##
     st.markdown("<h4>■通常のA/Bテスト（統計的仮説検定）</h4>", unsafe_allow_html=True)
-    st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用しています。（両側検定）")
+    st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用しています。")
     
 # テーブルのスタイルを調整
     st.markdown(rf'''
