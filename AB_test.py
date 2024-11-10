@@ -10,6 +10,16 @@ import os
 
 sns.set(font_scale=2)
 
+import matplotlib.font_manager as fm
+import matplotlib
+
+# Noto Sans CJK JPを指定
+font_path = '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc'  # フォントパス
+fontprop = fm.FontProperties(fname=font_path)
+
+# 日本語フォント設定
+matplotlib.rcParams['font.family'] = fontprop.get_name()
+
 
 # Google Fontsの読み込み
 st.markdown("""
