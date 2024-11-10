@@ -171,12 +171,14 @@ if st.session_state.authenticated:
           </tr>
         </table>
         ''', unsafe_allow_html=True)
+
     st.markdown("""
-    <div style='font-size: 14px; text-align: right;'>
-    ※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）<br>
-    ※月間換算 = 増加差分 ÷ テスト日数 × 30日
-    </div>
-    """, unsafe_allow_html=True)
+<div style='font-size: 14px; text-align: right; display: flex; flex-direction: column;'>
+    <div style='text-align: left; padding-left: 20px;'>※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）</div>
+    <div style='text-align: left; padding-left: 20px;'>※月間換算 = 増加差分 ÷ テスト日数 × 30日</div>
+</div>
+""", unsafe_allow_html=True)
+
     
     st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
     
