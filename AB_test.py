@@ -22,13 +22,21 @@ st.markdown('''
     </style>
 ''', unsafe_allow_html=True)
 
-# サイドバーにパスワード入力を移動
-password = st.sidebar.text_input("パスワード", type="password")
- 
-if password == os.environ.get("password"):
-    st.sidebar.success("アクセスが許可されました。")
-    ###サイドバー###
-    
+# セッションステートの初期化
+if 'authenticated' not in st.session_state:
+    st.session_state.authenticated = False
+
+# パスワード認証のコンテナ
+if not st.session_state.authenticated:
+    with st.sidebar.container():
+        password = st.text_input("パスワード", type="password")
+        if password == os.environ.get("password"):
+            st.session_state.authenticated = True
+            st.experimental_rerun()
+        elif password:
+            st.error("正しいパスワードを入力してください。")
+
+if st.session_state.authenticated:
     # サイドバーでの日付選択
     st.sidebar.subheader("施策詳細")
     
@@ -245,11 +253,5 @@ if password == os.environ.get("password"):
       <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
       ''', unsafe_allow_html=True)
 
-        # ここでPDFとして保存するオプションも追加可能
-    if st.button("PDFとして保存"):
-        # 例えばmatplotlibを使ってPDFとして保存する
-        fig.savefig("ab_test_results.pdf", format="pdf")
-        st.success("PDFとして保存しました！")
-
 else:
-    st.sidebar.error("パスワードを入力してください。")
+    st.sidebar.error("正しいパスワードを入力してください。")
