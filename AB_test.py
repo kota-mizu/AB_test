@@ -7,8 +7,10 @@ from datetime import datetime, timedelta
 from scipy import stats
 import matplotlib
 import os
-import japanize_matplotlib
-
+import matplotlib.font_manager as fm
+for font in fm.findSystemFonts(fontpaths=None, fontext='ttf'):
+    if "NotoSansCJK" in font:
+        print(font)
 
 sns.set(font_scale=2)
 
@@ -16,9 +18,9 @@ sns.set(font_scale=2)
 # Google Fontsの読み込み
 st.markdown('''
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
-    html, body, [class*="css"]  {
-        font-family: 'Noto Sans JP', sans-serif;
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+    body {
+        font-family: 'Roboto', sans-serif;
     }
     </style>
 ''', unsafe_allow_html=True)
