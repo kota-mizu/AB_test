@@ -216,8 +216,8 @@ if password == os.environ.get("password"):
     sns.histplot(samples_posterior_A, ax=ax, kde=True, label='CVR of A')
     sns.histplot(samples_posterior_B, ax=ax, kde=True, label='CVR of B')
     
-    # ラベルとタイトルを日本語に設定
-    ax.set_ylabel('density', fontsize='x-large')
+    # ラベルとタイトル
+    ax.set_ylabel('Density', fontsize='x-large')
     ax.set_xlabel('CVR', fontsize='x-large')
     ax.set_title('Distribution of CVR', fontsize='x-large')
     ax.legend(loc='upper right', fontsize='x-large')
