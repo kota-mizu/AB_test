@@ -4,4 +4,4 @@ matplotlib
 seaborn
 pandas
 scipy
-japanize-matplotlib
+
