@@ -129,19 +129,19 @@ if st.session_state.authenticated:
             font-size: 18px;
         }}
         th:nth-child(1), td:nth-child(1) {{
-            width: 14%;
+            width: 15%;
         }}
         th:nth-child(2), td:nth-child(2),
         th:nth-child(3), td:nth-child(3),
         th:nth-child(4), td:nth-child(4) {{
-            width: 14%;
+            width: 15%;
         }}
         th:nth-child(5), th:nth-child(6), th:nth-child(7) {{
-            width: 14%;
+            width: 12%;
             font-size: 15px
         }}
         td:nth-child(5), td:nth-child(6), td:nth-child(7) {{
-            width: 14%;
+            width: 12%;
         }}
         </style>
 
