@@ -137,11 +137,11 @@ if st.session_state.authenticated:
             width: 15%;
         }}
         th:nth-child(5), th:nth-child(6), th:nth-child(7) {{
-            width: 12%;
+            width: 13%;
             font-size: 14px
         }}
         td:nth-child(5), td:nth-child(6), td:nth-child(7) {{
-            width: 12%;
+            width: 13%;
         }}
         </style>
 
