@@ -208,7 +208,10 @@ if password == os.environ.get("password"):
     samples_posterior_B = posterior_B.rvs(samples)
     # A<Bとなる確率算出
     prob = (samples_posterior_A < samples_posterior_B).mean()
-    
+
+
+    plt.rcParams['font.family'] = 'Noto Sans CJK JP'  # 他の日本語フォントを指定することも可能
+
     # グラフ設定
     fig = plt.figure(figsize=(20, 10))
     ax = fig.add_subplot(111)
