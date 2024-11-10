@@ -7,10 +7,7 @@ from datetime import datetime, timedelta
 from scipy import stats
 import matplotlib
 import os
-import matplotlib.font_manager as fm
-for font in fm.findSystemFonts(fontpaths=None, fontext='ttf'):
-    if "NotoSansCJK" in font:
-        st.write(font)
+import japanize-matplotlib
 
 sns.set(font_scale=2)
 
