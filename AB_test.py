@@ -275,4 +275,4 @@ if st.session_state.authenticated:
       ''', unsafe_allow_html=True)
 
 else:
-    st.sidebar.error("正しいパスワードを入力してください。")
+    st.sidebar.error("パスワードを入力してください。")
