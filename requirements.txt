@@ -5,4 +5,3 @@ seaborn
 pandas
 scipy
 japanize-matplotlib
-python3-distutils
