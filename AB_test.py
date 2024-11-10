@@ -113,14 +113,6 @@ if st.session_state.authenticated:
     st.markdown("<h4>■通常のA/Bテスト（統計的仮説検定）</h4>", unsafe_allow_html=True)
     st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用しています。（両側検定）")
     
-    st.markdown("""
-    <div style='font-size: 12px;'>
-    ※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）<br>
-    ※月間換算 = 増加差分 ÷ テスト日数 × 30日
-    </div>
-    """, unsafe_allow_html=True)
-    
-    
 # テーブルのスタイルを調整
     st.markdown(rf'''
         <style>
@@ -179,7 +171,12 @@ if st.session_state.authenticated:
           </tr>
         </table>
         ''', unsafe_allow_html=True)
-    
+    st.markdown("""
+    <div style='font-size: 14px; text-align: right;'>
+    ※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）<br>
+    ※月間換算 = 増加差分 ÷ テスト日数 × 30日
+    </div>
+    """, unsafe_allow_html=True)
     
     st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
     
