@@ -210,18 +210,16 @@ if password == os.environ.get("password"):
     prob = (samples_posterior_A < samples_posterior_B).mean()
 
 
-    plt.rcParams['font.family'] = 'Noto Sans CJK JP'  # 他の日本語フォントを指定することも可能
-
     # グラフ設定
     fig = plt.figure(figsize=(20, 10))
     ax = fig.add_subplot(111)
-    sns.histplot(samples_posterior_A, ax=ax, kde=True, label='AのCVR')
-    sns.histplot(samples_posterior_B, ax=ax, kde=True, label='BのCVR')
+    sns.histplot(samples_posterior_A, ax=ax, kde=True, label='CVR of A')
+    sns.histplot(samples_posterior_B, ax=ax, kde=True, label='CVR of B')
     
     # ラベルとタイトルを日本語に設定
-    ax.set_ylabel('密', fontsize='x-large')
+    ax.set_ylabel('density', fontsize='x-large')
     ax.set_xlabel('CVR', fontsize='x-large')
-    ax.set_title('CVRの分布', fontsize='x-large')
+    ax.set_title('Distribution of CVR', fontsize='x-large')
     ax.legend(loc='upper right', fontsize='x-large')
     
     fig.tight_layout()
