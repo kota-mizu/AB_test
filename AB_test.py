@@ -84,7 +84,7 @@ if st.session_state.authenticated:
     st.header('A/Bテストツール')
     
     #タイトルメッセージ
-    st.markdown('A/Bテスト結果の訪問者数とCV数を入力することで、一般的なA/BテストおよびベイジアンA/Bテストによる信頼性を判定できます。また、そのままpdf化して結果報告に使うことも可能です。')
+    st.markdown('A/Bテスト結果の訪問者数とCV数を入力することで、通常のA/BテストとベイジアンA/Bテストによる信頼性を判定できます。また、pdf化して結果報告に使うことも可能です。')
     
     ## 施策内容 ##
     st.markdown("<h4>■施策について</h4>", unsafe_allow_html=True)
