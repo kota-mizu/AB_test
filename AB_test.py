@@ -29,7 +29,7 @@ if 'authenticated' not in st.session_state:
 # パスワード認証のコンテナ
 if not st.session_state.authenticated:
     with st.sidebar.container():
-        password = st.text_input("パスワード", type="password")
+        password = st.text_input("パスワード", type="text")
         if password == os.environ.get("password"):
             st.session_state.authenticated = True
             st.rerun()
