@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from scipy import stats
 import matplotlib
 import os
-import japanize-matplotlib
+import japanize_matplotlib
 
 sns.set(font_scale=2)
 
