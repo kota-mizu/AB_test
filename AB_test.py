@@ -245,5 +245,11 @@ if password == os.environ.get("password"):
       <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
       ''', unsafe_allow_html=True)
 
+        # ここでPDFとして保存するオプションも追加可能
+    if st.button("PDFとして保存"):
+        # 例えばmatplotlibを使ってPDFとして保存する
+        fig.savefig("ab_test_results.pdf", format="pdf")
+        st.success("PDFとして保存しました！")
+
 else:
     st.sidebar.error("パスワードを入力してください。")
