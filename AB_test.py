@@ -114,7 +114,7 @@ if st.session_state.authenticated:
     st.markdown("通常のA/Bテストの結果です。カイ二乗検定を使用しています。（両側検定）")
     
     
-    # テーブルのスタイルを調整
+# テーブルのスタイルを調整
     st.markdown(rf'''
         <style>
         table {{
@@ -129,32 +129,46 @@ if st.session_state.authenticated:
             font-size: 18px;
         }}
         th:nth-child(1), td:nth-child(1) {{
-            width: 19%;
+            width: 14%;
         }}
         th:nth-child(2), td:nth-child(2),
         th:nth-child(3), td:nth-child(3),
         th:nth-child(4), td:nth-child(4) {{
-            width: 19%;
+            width: 14%;
         }}
-        th:nth-child(5){{
-            width: 19%;
-            font-size:15px
+        th:nth-child(5), th:nth-child(6), th:nth-child(7) {{
+            width: 14%;
+            font-size: 15px
         }}
-    
-        td:nth-child(5) {{
-            width: 24%;
+        td:nth-child(5), td:nth-child(6), td:nth-child(7) {{
+            width: 14%;
         }}
         </style>
-    
+
         <table>
           <tr>
-            <th>対象</th><th>訪問者数</th><th>CV数</th><th>CVR</th><th>CVR改善率（B/A）</th>
+            <th>対象</th>
+            <th>訪問者数</th>
+            <th>CV数</th>
+            <th>CVR</th>
+            <th>CVR改善率（B/A）</th>
+            <th>増加差分</th>
+            <th>月間換算</th>
           </tr>
           <tr>
-            <td>A</td><td>{visitors_a}</td><td>{conversion_a}</td><td>{"{:.1%}".format(cvr_a)}</td><td rowspan="2" colspan="1">{"{:.1%}".format(cvr_b / cvr_a)}</td>
+            <td>A</td>
+            <td>{visitors_a}</td>
+            <td>{conversion_a}</td>
+            <td>{"{:.1%}".format(cvr_a)}</td>
+            <td rowspan="2">{"{:.1%}".format(cvr_b / cvr_a)}</td>
+            <td rowspan="2">{"{:.1f}".format((cvr_b - cvr_a) * (visitors_a + visitors_b))}</td>
+            <td rowspan="2">{"{:.1f}".format((cvr_b - cvr_a) * (visitors_a + visitors_b) / days_difference * 30) if days_difference > 0 else "N/A"}</td>
           </tr>
           <tr>
-            <td>B</td><td>{visitors_b}</td><td>{conversion_b}</td><td>{"{:.1%}".format(cvr_b)}</td>
+            <td>B</td>
+            <td>{visitors_b}</td>
+            <td>{conversion_b}</td>
+            <td>{"{:.1%}".format(cvr_b)}</td>
           </tr>
         </table>
         ''', unsafe_allow_html=True)
