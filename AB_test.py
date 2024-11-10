@@ -86,24 +86,31 @@ if st.session_state.authenticated:
     #タイトルメッセージ
     st.markdown('A/Bテスト結果の訪問者数とCV数を入力することで、通常のA/BテストとベイジアンA/Bテストによる信頼性を判定できます。また、pdf化して結果報告に使うことも可能です。')
     
-    ## 施策内容 ##
-    st.markdown("<h4>■施策について</h4>", unsafe_allow_html=True)
-    policy_content = st.text_area("〇施策内容", placeholder="入力できます")
+
+    # 施策内容を展開タブに追加
+    with st.expander("施策について"):
+        st.markdown("<h4>■施策について</h4>", unsafe_allow_html=True)
+        policy_content = st.text_area("〇施策内容", placeholder="入力できます")
+        
+        st.write("〇評価指標")
+        evaluation_metrix = "KPI、CVR、CVR向上率など"  # ここは変数の例です
+        st.markdown(f'<span style="font-weight: bold;"><u>{evaluation_metrix}</u></span>', unsafe_allow_html=True)
     
-    st.write("〇評価指標")
-    st.markdown(f'<span style="font-weight: bold;"><u>{evaluation_metrix}</u></span>', unsafe_allow_html=True)
+        ##テスト日数##
+        st.write("〇テスト期間")
+        start_date = "2024-11-01"  # 例: 開始日
+        end_date = "2024-11-30"  # 例: 終了日
     
+        if end_date >= start_date:
+            days_difference = (pd.to_datetime(end_date) - pd.to_datetime(start_date)).days
+            st.markdown(f'<span style="font-weight: bold;"><u>{start_date} ➡ {end_date}（{days_difference} days）</u></span>', unsafe_allow_html=True)
+        else:
+            st.markdown('<span style="font-weight: bold;"><u>終了日は開始日より後の日付を選択してください。</u></span>', unsafe_allow_html=True)
     
-    ##テスト日数##
-    st.write("〇テスト期間")
-    if end_date >= start_date:
-        days_difference = (end_date - start_date).days
-        st.markdown(f'<span style="font-weight: bold;"><u>{start_date} ➡ {end_date}（{days_difference} days）</u></span>', unsafe_allow_html=True)
-    else:
-        st.markdown('<span style="font-weight: bold;"><u>終了日は開始日より後の日付を選択してください。</u></span>', unsafe_allow_html=True)
-    
-    st.write("〇施策関連URL（必要であれば）")
-    st.markdown(f'<span style="font-weight: bold;"><u>{url_link}</u></span>', unsafe_allow_html=True)
+        st.write("〇施策関連URL（必要であれば）")
+        url_link = "https://example.com"  # 例: URL
+        st.markdown(f'<span style="font-weight: bold;"><u>{url_link}</u></span>', unsafe_allow_html=True)
+
     
     
     st.markdown("-----------------")  # ここで横線を追加
