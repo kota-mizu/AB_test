@@ -209,9 +209,6 @@ if password == os.environ.get("password"):
     # A<Bとなる確率算出
     prob = (samples_posterior_A < samples_posterior_B).mean()
     
-    # 日本語フォントの設定
-    plt.rcParams['font.family'] = 'Noto Sans CJK JP'  # 日本語フォントを指定
-    
     # グラフ設定
     fig = plt.figure(figsize=(20, 10))
     ax = fig.add_subplot(111)
