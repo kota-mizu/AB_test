@@ -243,4 +243,4 @@ if password == os.environ.get("password"):
       ''', unsafe_allow_html=True)
 
 else:
-    st.sidebar.error("アクセスが拒否されました。")
+    st.sidebar.error("パスワードを入力してください。")
