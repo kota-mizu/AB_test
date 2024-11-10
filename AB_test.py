@@ -209,20 +209,24 @@ if password == os.environ.get("password"):
     # A<Bとなる確率算出
     prob = (samples_posterior_A < samples_posterior_B).mean()
     
+    # 日本語フォントの設定
+    plt.rcParams['font.family'] = 'Noto Sans CJK JP'  # 日本語フォントを指定
+    
     # グラフ設定
-    fig = plt.figure(figsize=(20,10))
+    fig = plt.figure(figsize=(20, 10))
     ax = fig.add_subplot(111)
     sns.histplot(samples_posterior_A, ax=ax, kde=True, label='AのCVR')
     sns.histplot(samples_posterior_B, ax=ax, kde=True, label='BのCVR')
-    ax.set_ylabel('密', fontsize='x-large')  
+    
+    # ラベルとタイトルを日本語に設定
+    ax.set_ylabel('密', fontsize='x-large')
     ax.set_xlabel('CVR', fontsize='x-large')
-    ax.set_title('CVRの分布', fontsize='x-large')  
+    ax.set_title('CVRの分布', fontsize='x-large')
     ax.legend(loc='upper right', fontsize='x-large')
+    
     fig.tight_layout()
     
-    # 可視化
-    st.markdown("<h5>◇CVRの事後分布（A vs B）</h5>", unsafe_allow_html=True)
-    
+    # Streamlitで表示
     st.pyplot(fig)
     
     # probの値に基づいて色を決定
