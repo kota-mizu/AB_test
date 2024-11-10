@@ -174,8 +174,8 @@ if st.session_state.authenticated:
 
     st.markdown("""
 <div style="font-size: 14px; text-align: right;">
-    <div style="display: inline-block; text-align: left; width: 300px;">※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）</div><br>
-    <div style="display: inline-block; text-align: left; width: 300px;">※月間換算 = 増加差分 ÷ テスト日数 × 30日</div>
+    <div style="display: inline-block; text-align: left; width: 40%;">※増加差分 = （BのCVR - AのCVR）×（A+Bの総訪問者数）</div><br>
+    <div style="display: inline-block; text-align: left; width: 40%;">※月間換算 = 増加差分 ÷ テスト日数 × 30日</div>
 </div>
 """, unsafe_allow_html=True)
 
