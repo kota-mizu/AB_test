@@ -10,7 +10,7 @@ import os
 import matplotlib.font_manager as fm
 for font in fm.findSystemFonts(fontpaths=None, fontext='ttf'):
     if "NotoSansCJK" in font:
-        print(font)
+        st.write(font)
 
 sns.set(font_scale=2)
 
