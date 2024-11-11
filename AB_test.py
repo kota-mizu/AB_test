@@ -186,11 +186,11 @@ if st.session_state.authenticated:
     st.markdown("<h5>◇結果</h5>", unsafe_allow_html=True)
     
     #t検定（今回は未使用）
-    a = np.zeros(visitors_a)
-    a[:conversion_a] = 1
-    b = np.zeros(visitors_b)  # 修正：変数名をvisitors_bに変更
-    b[:conversion_b] = 1      # 修正：変数名をconversion_bに変更
-    res = stats.ttest_ind(a, b, equal_var=False)
+    # a = np.zeros(visitors_a)
+    # a[:conversion_a] = 1
+    # b = np.zeros(visitors_b)  # 修正：変数名をvisitors_bに変更
+    # b[:conversion_b] = 1      # 修正：変数名をconversion_bに変更
+    # res = stats.ttest_ind(a, b, equal_var=False)
     
     
     ##カイ二乗セクション##
