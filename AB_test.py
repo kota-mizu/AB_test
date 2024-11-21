@@ -62,17 +62,17 @@ if st.session_state.authenticated:
     st.sidebar.subheader('取得データを入力して下さい。')
     col3, col4 = st.sidebar.columns(2)
     with col3:
-        visitors_a = st.number_input('Aの訪問者数')
+        visitors_a = st.number_input('Aの訪問者数', value=1000)
     with col4:
-        conversion_a = st.number_input('AのCV数')
+        conversion_a = st.number_input('AのCV数', value=500)
     cvr_a = conversion_a / visitors_a
     st.sidebar.markdown(f'AのCVR :  **{"{:.1%}".format(cvr_a)}**')
     
     col5, col6 = st.sidebar.columns(2)
     with col5:
-        visitors_b = st.number_input('Bの訪問者数')
+        visitors_b = st.number_input('Bの訪問者数', value=1000)
     with col6:
-        conversion_b = st.number_input('BのCV数')
+        conversion_b = st.number_input('BのCV数', value=500)
     cvr_b = conversion_b / visitors_b
     st.sidebar.markdown(f'BのCVR :  **{"{:.1%}".format(cvr_b)}**')
     
