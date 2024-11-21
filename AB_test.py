@@ -225,7 +225,6 @@ if st.session_state.authenticated:
     ## ベイジアンA/Bテストセクション##
     st.markdown("<h4>■ベイジアンA/Bテスト</h4>", unsafe_allow_html=True)
     st.markdown("ベイジアンA/Bテストを用いて、AとBの各コンバージョン率（CVR）に対する事後分布を算出し、どちらの施策がより効果的かを評価しています。")
-    st.markdown("ここでは各施策のCVRは数学的にベータ分布に従うと仮定しているため、得られた事後分布に基づき、乱数を生成（サンプリング）しました。このサンプリングした乱数同士で比較を行い、BのCVRがAのCVRを上回る確率を計算しています。")
     
     # 事前分布のパラメータのα、βを指定
     alpha_prior = 1
@@ -278,6 +277,9 @@ if st.session_state.authenticated:
     st.markdown(fr'''
       <p style="text-align: center; font-size: 20px;">Bの方がCVRが高い確率は <span style="color: {color}; font-size: {font_size}; font-weight: bold;">{"{:.1%}".format(prob)}</span></p>
       ''', unsafe_allow_html=True)
+
+    st.markdown("※ここでは各施策のCVRは数学的にベータ分布に従うと仮定しているため、得られた事後分布に基づき、乱数を生成（サンプリング）しました。このサンプリングした乱数同士で比較を行い、BのCVRがAのCVRを上回る確率を計算しています。")
+
 
 else:
     st.sidebar.error("パスワードを入力してください。")
